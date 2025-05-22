@@ -21,6 +21,13 @@ spec:
         image: nginx:latest
         ports:
         - containerPort: 80
+        volumeMounts:
+          - name: config-volume
+            mountPath: /usr/share/nginx/html
+        volumes:
+        - name: config-volume
+          configMap:
+            name: nginx-config
         env:
         - name: WELCOME_MSG
           value: "Hello, from Kubernetes!"
