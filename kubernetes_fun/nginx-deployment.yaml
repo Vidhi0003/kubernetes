@@ -30,7 +30,10 @@ spec:
             name: nginx-config
         env:
         - name: WELCOME_MSG
-          value: "Hello, from Kubernetes!"
+          valueFrom:
+            configMapKeyRef:
+              name: nginx-config
+              key: index.html
         resources:
           requests:
             cpu: "100m"
